@@ -1,5 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Class ZonesController
+ */
 class ZonesController extends CI_Controller {
 
 	
@@ -14,9 +18,13 @@ class ZonesController extends CI_Controller {
 		//die(json_encode($data));
 		$this->load->view('Admin/showAllZones', $data);
 	}
-	
+
 	public function createZone()
 	{
+		/**
+		 * [$par parent zone to be checked]
+		 * @var [integer]
+		 */
 		$par = isset($_GET['parent'])?(is_numeric($_GET['parent'])?$_GET['parent']:1):1;
 		$data=$this->db->query("select * from zones")->result();
 		$a['name']="";
@@ -28,9 +36,18 @@ class ZonesController extends CI_Controller {
 		$this->load->view('Admin/createZone', $a);
 	}
 	
+	/**
+	 * [modalData description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
 	public function modalData($id)
-	{
+	{ 
+		/** @var [zones object] [return zones to ajax request] */
 		$data=$this->db->query("select * from zones where id={$id}")->result();
 		echo json_encode($data);
 	}
+
+	
+
 }

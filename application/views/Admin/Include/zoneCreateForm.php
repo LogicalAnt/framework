@@ -1,5 +1,5 @@
 
-<form autocomplete="off">
+<form autocomplete="off" method="POST" action="">
   <div class="form-group">
     <label>Zone Name</label>
     <input type="text" class="form-control"  placeholder="Meaningful Zone Name" id="zName">
